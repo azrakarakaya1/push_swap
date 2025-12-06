@@ -1,5 +1,10 @@
 #include "push_swap.h"
 
+void error_exit()
+{
+    
+}
+
 int ft_atol(const char *str)
 {
     int i;
