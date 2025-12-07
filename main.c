@@ -7,7 +7,33 @@
 */
 #include "push_swap.h"
 
+int is_sorted(t_stack *stack)
+{
+    while (stack && stack->next)
+    {
+        if (stack->value > stack->next->value)
+            return (0);
+        stack = stack->next;
+    }
+    return (1);
+}
 
+void free_stack(t_stack **stack)
+{
+    t_stack *head;
+    t_stack *temp;
+
+    if (!stack || !*stack)
+        return ;
+    head = *stack;
+    while (head)
+    {
+        temp = head->next;
+        free(head);
+        head = temp;
+    }
+    *stack = NULL;
+}
 
 int main(int argc, char **argv)
 {

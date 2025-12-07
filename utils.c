@@ -1,8 +1,23 @@
 #include "push_swap.h"
 
-void error_exit()
+void error_exit(void)
 {
-    
+    write(2, "Error\n", 6);
+    exit(1);
+}
+
+int check_dup(t_stack *a, int n)
+{
+    t_stack *tmp;
+
+    tmp = a;
+    while (tmp)
+    {
+        if (tmp->value == n)
+            return (1);
+        tmp = tmp->next;
+    }
+    return (0);
 }
 
 int ft_atol(const char *str)

@@ -1,37 +1,59 @@
 #include "push_swap.h"
 
-int is_sorted(t_stack *stack)
+// creates and returns a new node, index = -1 means its not set 
+t_stack *new_node(int value)
 {
-    while (stack && stack->next)
+    t_stack *new_node;
+
+    new_node = malloc(sizeof(t_stack));
+    if (!new_node)
+        return (NULL);
+    new_node->value = value;
+    new_node->index = -1;
+    new_node->next = NULL;
+    return (new_node);
+}
+
+// returns the last node
+t_stack *last_node(t_stack *head)
+{
+    t_stack *last_node;
+
+    last_node = head;
+    if (!last_node)
+        return (NULL);
+    while (last_node->next);
+        last_node = last_node->next;
+    return (last_node);
+}
+
+// adds a node to the bottom of stack
+void add_node_end(t_stack **stack, t_stack *new_node)
+{
+    t_stack *end;
+
+    if (!new_node)
+        return ;
+    if (!*stack)
     {
-        if (stack->value > stack->next->value)
-            return (0);
-        stack = stack->next;
+        *stack = new_node;
+        return ;
     }
-    return (1);
+    end = last_node(*stack);
+    end->next = new_node;
 }
 
-int check_dup()
+int stack_size(t_stack *stack)
 {
+    t_stack *node;
+    int size;
 
-}
-
-void init_a(t_stack **a, char **argv)
-{
-    long n;
-    int i;
-
-    i = 1;
-    while (argv[i])
+    size = 0;
+    node = stack;
+    while (node)
     {
-        n = atol(argv[i]);
-        if (n > 2147483647 || n < -2147483648)
-            error_exit();
-        if (check_dup(*a, (int)n))
-            error_exit();
-
-        // STACK ADD BACK FUNC
+        node = node->next;
+        size++;
     }
-    // ASSIGN INDEXES
+    return (size);
 }
-
