@@ -1,9 +1,9 @@
 NAME = push_swap
 FLAG = -Wall -Wextra -Werror
 
-SRC = 
+SRC = init.c main.c push.c radix.c reverse_rotate.c rotate.c simple_sort.c stack_utils.c swap.c utils.c
 
-OBJ = $(SRC:.c=o)
+OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
@@ -16,6 +16,6 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-RE: fclean all
+re: fclean all
 
 .PHONY: all clean fclean re

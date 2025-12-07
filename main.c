@@ -7,18 +7,7 @@
 */
 #include "push_swap.h"
 
-int is_sorted(t_stack *stack)
-{
-    while (stack && stack->next)
-    {
-        if (stack->value > stack->next->value)
-            return (0);
-        stack = stack->next;
-    }
-    return (1);
-}
-
-void free_stack(t_stack **stack)
+static void free_stack(t_stack **stack)
 {
     t_stack *head;
     t_stack *temp;
@@ -54,6 +43,8 @@ int main(int argc, char **argv)
     }
     if (argc <= 6)
         simple_sort(&a, &b);
+    else
+        radix_sort(&a, &b);
     free_stack(&a);
     free_stack(&b);
     return (0);

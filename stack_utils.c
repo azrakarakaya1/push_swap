@@ -22,7 +22,7 @@ t_stack *last_node(t_stack *head)
     last_node = head;
     if (!last_node)
         return (NULL);
-    while (last_node->next);
+    while (last_node->next)
         last_node = last_node->next;
     return (last_node);
 }
@@ -56,4 +56,15 @@ int stack_size(t_stack *stack)
         size++;
     }
     return (size);
+}
+
+int is_sorted(t_stack *stack)
+{
+    while (stack && stack->next)
+    {
+        if (stack->value > stack->next->value)
+            return (0);
+        stack = stack->next;
+    }
+    return (1);
 }

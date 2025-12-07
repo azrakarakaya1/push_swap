@@ -20,7 +20,7 @@ int check_dup(t_stack *a, int n)
     return (0);
 }
 
-int ft_atol(const char *str)
+long ft_atol(const char *str)
 {
     int i;
     int sign;

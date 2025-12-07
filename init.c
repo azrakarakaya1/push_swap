@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void index_a(t_stack *a)
+static void index_a(t_stack *a)
 {
     t_stack *initial;
     t_stack *loop;
@@ -18,7 +18,7 @@ void index_a(t_stack *a)
                 count++;
             loop = loop->next;
         }
-        initial->value = count;
+        initial->index = count;
         initial = initial->next;
     }
 }
@@ -31,12 +31,13 @@ void init_a(t_stack **a, char **argv)
     i = 1;
     while (argv[i])
     {
-        n = atol(argv[i]);
+        n = ft_atol(argv[i]);
         if (n > 2147483647 || n < -2147483648)
             error_exit();
         if (check_dup(*a, (int)n))
             error_exit();
         add_node_end(a, new_node((int)n));
+        i++;
     }
     index_a(*a);
 }

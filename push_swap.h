@@ -29,14 +29,14 @@ void pb(t_stack **a, t_stack **b);
 
 void error_exit(void);
 void add_node_end(t_stack **stack, t_stack *new_node);
+void radix_sort(t_stack **a, t_stack **b);
+void init_a(t_stack **a, char **argv);
+void simple_sort(t_stack **a, t_stack **b);
 int stack_size(t_stack *stack);
 int check_dup(t_stack *a, int n);
-int ft_atol(const char *str);
+int is_sorted(t_stack *stack);
+long ft_atol(const char *str);
 t_stack *new_node(int value);
 t_stack *last_node(t_stack *head);
-
-
-//radix
-//simple
 
 #endif
